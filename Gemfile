@@ -33,7 +33,10 @@ gem 'carrierwave', '~> 0.10.0'
 gem 'mini_magick', '~> 4.3'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
+# Use Omniauth Facebook plugin
+gem 'omniauth-facebook', '~> 4.0'
+# Use ActiveRecord Sessions
+gem 'activerecord-session_store', '~> 1.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
