@@ -5,7 +5,12 @@ class InstrumentsController < ApplicationController
   # GET /instruments.json
   def index
     @instruments = Instrument.all.order("created_at desc")
+    respond_to do |format|
+    format.html
+    format.xlsx
   end
+end
+
 
   # GET /instruments/1
   # GET /instruments/1.json

@@ -53,6 +53,14 @@ GEM
     archive-zip (0.11.0)
       io-like (~> 0.3.0)
     arel (9.0.0)
+    axlsx (3.0.0.pre)
+      htmlentities (~> 4.3, >= 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (~> 1.8, >= 1.8.2)
+      rubyzip (~> 1.2, >= 1.2.1)
+    axlsx_rails (0.5.2)
+      actionpack (>= 3.1)
+      axlsx (>= 2.0.1)
     bcrypt (3.1.12-x86-mingw32)
     better_errors (2.5.0)
       coderay (>= 1.0.0)
@@ -106,6 +114,8 @@ GEM
     erubi (1.8.0)
     eventmachine (1.2.7-x86-mingw32)
     execjs (2.7.0)
+    faker (1.9.1)
+      i18n (>= 0.7)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25-x86-mingw32)
@@ -129,6 +139,7 @@ GEM
       guard-compat (~> 1.0)
       multi_json (~> 1.8)
     hashie (3.6.0)
+    htmlentities (4.3.4)
     http_parser.rb (0.6.0)
     i18n (1.4.0)
       concurrent-ruby (~> 1.0)
@@ -283,6 +294,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-session_store (~> 1.0)
+  axlsx_rails
   better_errors (~> 2.4)
   bootsnap (>= 1.1.0)
   bulma-rails (~> 0.6.1)
@@ -293,6 +305,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise (~> 4.4)
   duktape
+  faker
   gravatar_image_tag (~> 1.2)
   guard (~> 2.14, >= 2.14.1)
   guard-livereload (~> 2.5, >= 2.5.2)

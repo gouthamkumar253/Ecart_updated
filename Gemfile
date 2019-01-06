@@ -37,6 +37,10 @@ gem 'mini_magick', '~> 4.3'
 gem 'omniauth-facebook', '~> 4.0'
 # Use ActiveRecord Sessions
 gem 'activerecord-session_store', '~> 1.0'
+# Excel export
+gem 'axlsx_rails'
+# Fake data
+gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
