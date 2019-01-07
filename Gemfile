@@ -43,6 +43,8 @@ gem 'axlsx_rails'
 gem 'faker'
 # Admin View
 gem 'rails_admin', '~> 1.3'
+# Cron jobs
+gem 'whenever', require: false
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
