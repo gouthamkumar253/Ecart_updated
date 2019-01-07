@@ -41,6 +41,8 @@ gem 'activerecord-session_store', '~> 1.0'
 gem 'axlsx_rails'
 # Fake data
 gem 'faker'
+# Admin View
+gem 'rails_admin', '~> 1.3'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -8,6 +8,7 @@ class InstrumentsController < ApplicationController
     respond_to do |format|
     format.html
     format.xlsx
+
   end
 end
 
@@ -30,11 +31,12 @@ end
   # POST /instruments.json
   def create
     @instrument = current_user.instruments.build(instrument_params)
-
+    @user = current_user
     respond_to do |format|
       if @instrument.save
         format.html { redirect_to @instrument, notice: 'Instrument was successfully created.' }
         format.json { render :show, status: :created, location: @instrument }
+        UsermailMailer.instrument_email(@user).deliver_later(wait_until: 10.seconds.from_now)
       else
         format.html { render :new }
         format.json { render json: @instrument.errors, status: :unprocessable_entity }
