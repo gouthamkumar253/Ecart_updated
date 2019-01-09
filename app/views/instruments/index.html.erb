@@ -12,6 +12,16 @@
 </section>
 <% end %>
 
+  <div>
+    <%= form_tag instruments_path, :method => 'get', :id => "instruments_search" do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", :name => nil %>
+      </p>
+    
+    <% end %>
+  </div>
+
 <div class="instrument-index-grid pt4">
   <% @instruments.each do |instrument| %>
 
@@ -32,6 +42,7 @@
       <h3 class="fw7 f4 title"><%= link_to instrument.title, instrument %></h3>
 
       <p class="has-text-gray fg pt1">Sold by <%= instrument.user.username %></p>
+      <%#= rating_for @instrument, 'Quality',star: 10, disable_after_rate: true %>
 
       <p class="f3 fw6 has-text-right pt2 price"><%= number_to_currency(instrument.price) %></p>
 
@@ -43,4 +54,7 @@
     </div>
   </div>
   <% end %>
+  <div>
+      <%= will_paginate @instruments %>
+  </div>
 </div>

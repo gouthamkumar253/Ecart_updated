@@ -1,10 +1,16 @@
 class InstrumentsController < ApplicationController
   before_action :set_instrument, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index,:show]
+  
   # GET /instruments
   # GET /instruments.json
   def index
-    @instruments = Instrument.all.order("created_at desc")
+   # @instruments = Instrument.all.order("created_at desc")
+   if(params[:search])
+    @instruments = Instrument.search(params[:search]).paginate(:page => params[:page],:per_page => 5).order("created_at desc")
+   else
+    @instruments = Instrument.paginate(:page => params[:page],:per_page => 5).order("created_at desc")
+    end
     respond_to do |format|
     format.html
     format.xlsx

@@ -45,9 +45,17 @@ gem 'faker'
 gem 'rails_admin', '~> 1.3'
 # Cron jobs
 gem 'whenever', require: false
+# Rating Feature
+gem 'ratyrate'
+# Payment Gateway
+gem 'stripe'
+# Pagination
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
+# Comments
+# gem 'commontator', '~> 4.11.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'binding_of_caller'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

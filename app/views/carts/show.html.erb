@@ -8,6 +8,9 @@
   <div class="columns">
     <div class="column">
       <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger" %>
+      <br>
+      
+      <%= button_to 'Proceed Payment', new_charge_path ,class: 'button is-warning'%> 
     </div>
     <div class="column total has-text-right">
       <h4 class="title is-4">

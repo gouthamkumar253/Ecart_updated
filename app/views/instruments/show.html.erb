@@ -55,15 +55,40 @@
           <td class="has-text-weight-bold">Model:</td>
           <td><%= @instrument.model %></td>
         </tr>
+
+        <tr>
+          <td class="has-text-weight-bold">Quality of product:</td>
+          <td><% if current_user %>
+            <%= rating_for @instrument, 'Quality',star: 10, disable_after_rate: true %>
+          </td>
+          <% end %>
+        </tr>
       </table>
+      <p>Comments</p>
+      <br>
+      <% if has_comments(@instrument.id) %>      
+          <% @comment=show_comments(@instrument.id) %>
+            <table>
+              <% @comment.each do |c| %>
+              <tr>
+              <td class="has-text-weight-bold"><%= c.username%></td>
+              <td><%= c.comment%></td>
+            <%end%>
+            </table>
+          <% end %>
     </div>
     </div>
+
+    
+      
+    
     <div class="column is-3 is-offset-1">
       <div class="bg-white pa4 border-radius-3">
         <h4 class="title is-5 has-text-centered"><%= number_to_currency(@instrument.price) %></h4>
         <p class="has-text-centered mb4">Sold by <%= @instrument.user.username %></p>
         <% if user_signed_in? %>
         <%= button_to 'Add to cart',line_items_path(instrument_id: @instrument),class: 'button is-warning add-to-cart' %>
+        <%= link_to 'Comments', new_comment_path(instrument_id: @instrument) , class: "navbar-item button is-dark" %>
         
         <% else %>
         <%= button_to 'Add to cart',new_user_session_path, class:"navbar-item button is-warning" %>
