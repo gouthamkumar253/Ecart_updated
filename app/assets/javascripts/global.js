@@ -1,3 +1,4 @@
+// Destroy notification after 4 seconds
 document.addEventListener("turbolinks:load", function() {
 
   var notification = document.querySelector('.global-notification');
@@ -5,7 +6,7 @@ document.addEventListener("turbolinks:load", function() {
   if(notification) {
     window.setTimeout(function() {
       notification.style.display = "none";
-    }, 4000);
+    }, 10000);
   }
 
 });

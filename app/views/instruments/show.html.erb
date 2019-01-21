@@ -89,7 +89,13 @@
         <% if user_signed_in? %>
         <%= button_to 'Add to cart',line_items_path(instrument_id: @instrument),class: 'button is-warning add-to-cart' %>
         <%= link_to 'Comments', new_comment_path(instrument_id: @instrument) , class: "navbar-item button is-dark" %>
+        <%= link_to 'Add Comment', "#", :id=>"new_comment" ,class: 'button is-warning add-to-cart'%>
+        <div id="new_comment_form">
+            <%= render 'form_comment', instrument: @instrument, username: current_user.username %>   
+       </div>
         
+    </div>
+
         <% else %>
         <%= button_to 'Add to cart',new_user_session_path, class:"navbar-item button is-warning" %>
         <% end %>

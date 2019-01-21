@@ -1,6 +1,6 @@
 wb = xlsx_package.workbook
 wb.add_worksheet(name: "Instruments") do |sheet|
-  @instruments.each do |instrument|
+  Instrument.all.each do |instrument|
     sheet.add_row [instrument.user.username, instrument.price]
   end
 end

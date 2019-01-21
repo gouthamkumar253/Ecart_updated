@@ -1,5 +1,5 @@
 # encoding: utf-8
-
+#Image Upload Using MiniMagick
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:

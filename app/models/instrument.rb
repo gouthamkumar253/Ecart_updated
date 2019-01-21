@@ -1,7 +1,7 @@
 class Instrument < ApplicationRecord
-  belongs_to :user, optional: true
-  has_many :line_items
-  has_many :comments
+  belongs_to :user, optional: true 
+  has_many :line_items , dependent: :destroy
+  has_many :comments, dependent: :destroy
   before_destroy :not_referenced_by_any_line_items
   mount_uploader :image, ImageUploader
   #serialize :image, JSON # If you use SQLite, add this line

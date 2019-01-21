@@ -27,16 +27,15 @@ class LineItemsController < ApplicationController
   def create
     instrument= Instrument.find(params[:instrument_id])
     @line_item = @cart.add_instrument(instrument)
-
-    respond_to do |format|
-      if @line_item.save
-        format.html { redirect_to @line_item.cart, notice: 'Item added to cart successfully.' }
-        format.json { render :show, status: :created, location: @line_item }
-      else
-        format.html { render :new }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @line_item.save
+          format.html { redirect_to @line_item.cart, notice: 'Item added to cart successfully.' }
+          format.json { render :show, status: :created, location: @line_item }
+        else
+          format.html { render :new }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PATCH/PUT /line_items/1

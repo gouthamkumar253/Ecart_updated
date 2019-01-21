@@ -20,9 +20,19 @@ $link-hover: #222;
 @import "bulma";
 @import "functions";
 
-
+#new_comment_form {
+  display: none;
+}
 .notification {
   border-radius: 0;
+}
+
+#messages {
+  max-height: 450px;
+  overflow-y: auto;
+  .avatar {
+    margin: 0.5rem;
+  }
 }
 
 .notification:not(:last-child) {

@@ -22,7 +22,7 @@ before_action :set_id
 		instrument=Instrument.find(params[:instrument_id])
 
     @comment = instrument.comments.build(comment_params)
-    # @user = current_user
+    #nil.check
     respond_to do |format|
       if @comment.save
         format.html { redirect_to instruments_path, notice: 'Comment was successfully posted.' }

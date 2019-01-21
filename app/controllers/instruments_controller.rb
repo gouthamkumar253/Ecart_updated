@@ -14,10 +14,20 @@ class InstrumentsController < ApplicationController
     respond_to do |format|
     format.html
     format.xlsx
-
   end
 end
 
+  def show_user_instruments
+    @user=current_user
+      if @user.instruments.present?
+        @instruments = @user.instruments.paginate(:page => params[:page],:per_page => 5).order("created_at desc")
+      end
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
+  end
+  
 
   # GET /instruments/1
   # GET /instruments/1.json
@@ -82,6 +92,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instrument_params
-      params.require(:instrument).permit(:brand, :model, :description, :condition, :finish, :title, :price, :image)
+      params.require(:instrument).permit(:brand, :quantity, :model, :description, :condition, :finish, :title, :price, :image)
     end
 end

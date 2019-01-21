@@ -1,3 +1,4 @@
+// Preview image while uploading
 document.addEventListener("turbolinks:load", function() {
 
   var instrumentImage = document.querySelector('.instrument-image');

@@ -1,3 +1,4 @@
+# Payment Gateway- Not configured yet
 class ChargesController < ApplicationController
 	
 	Stripe.api_key = 'sk_test_BA6Bp7kyqK9BDSmzoGz4oefD'

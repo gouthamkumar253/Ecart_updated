@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require rails-ujs
-
+//= require cable
+//= require turbolinks
 //= require_tree .
 //= require_tree ../../../app/assets/javascripts
+//= require_tree ./channels
