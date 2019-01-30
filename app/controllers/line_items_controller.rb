@@ -25,16 +25,22 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    instrument= Instrument.find(params[:instrument_id])
-    @line_item = @cart.add_instrument(instrument)
-      respond_to do |format|
-        if @line_item.save
-          format.html { redirect_to @line_item.cart, notice: 'Item added to cart successfully.' }
-          format.json { render :show, status: :created, location: @line_item }
-        else
-          format.html { render :new }
-          format.json { render json: @line_item.errors, status: :unprocessable_entity }
+    if Instrument.find(params[:instrument_id]).quantity > 0
+      @instrument= Instrument.find(params[:instrument_id])
+      @instrument.decrement!(:quantity, 1)
+      @line_item = @cart.add_instrument(@instrument)
+        respond_to do |format|
+          if @line_item.save
+            format.html { redirect_to @line_item.cart, notice: 'Item added to cart successfully.' }
+            format.json { render :show, status: :created, location: @line_item }
+          else
+            format.html { render :new }
+            format.json { render json: @line_item.errors, status: :unprocessable_entity }
+          end
         end
+      else
+        flash[:alert] = 'The quantity you entered is not currently available'
+        redirect_to root_path
       end
   end
 
@@ -62,6 +68,8 @@ class LineItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+    
 
   private
     # Use callbacks to share common setup or constraints between actions.

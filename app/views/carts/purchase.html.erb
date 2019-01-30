@@ -1,0 +1,17 @@
+<hr/>
+<section class="section">
+  <%= render(@cart.line_items) %>
+  <%#= nil.check %>
+
+  <div class="columns">
+    <div class="column total has-text-right">
+      <h4 class="title is-4">
+        <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %>
+      </h4>
+    </div>
+  </div>
+        <%#= link_to 'Confirm', order_confirm_path(@cart),class: 'button is-warning'%> 
+                <%= link_to 'Pay', new_charge_path,class: 'button is-warning'%> 
+
+
+</section>

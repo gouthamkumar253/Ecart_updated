@@ -6,7 +6,8 @@ class User < ApplicationRecord
   has_many :instruments , dependent: :destroy
   has_many :chat_rooms, dependent: :destroy
   has_many :messages, dependent: :destroy
-
+  has_many :orders, dependent: :destroy
+ # has_many :carts, dependent: :destroy
 
   ratyrate_rater
   def self.create_from_provider_data(provider_data)

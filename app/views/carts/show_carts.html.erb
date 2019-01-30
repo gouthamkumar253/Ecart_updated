@@ -1,0 +1,7 @@
+<h1> Carts will be displayed here</h1>
+<h1>Your orders are</h1>
+<ul>
+<% @carts.each do |c| %>
+<li><%= link_to "#{c.total_price}","#" %></li></ul>
+<% end %> 
+<%# nil.check %>

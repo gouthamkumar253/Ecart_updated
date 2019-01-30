@@ -1,0 +1,9 @@
+<p>Dear <%= @user.username %>,</p>
+
+<p>Your order has been confirmed. Below is the summary of your order</p>
+<%= render (@cart.line_items) %>
+<%=link_to "Go to account", @url, class:"navbar-item" %> 
+
+
+<p>Yours truly,</p>
+<p>Saptaswaram</p>

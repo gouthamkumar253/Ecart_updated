@@ -1,26 +1,5 @@
-<% content_for :header do %>
-<section class="hero is-warning">
-  <div class="hero-body">
-    <div class="container">
-      <h1 class="title">
-        Your Instruments are
-      </h1>
-    </div>
-  </div>
-</section>
-<% end %>
-
-  <div>
-    <%= form_tag instruments_path, :method => 'get', :id => "instruments_search" do %>
-      <p>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", :name => nil %>
-      </p>
-    
-    <% end %>
-  </div>
-<% if @instruments.present? %>
 <div class="instrument-index-grid pt4">
+  <%# nil.check %>
   <% @instruments.each do |instrument| %>
 
     <div class="instrument border-light">
@@ -51,13 +30,9 @@
 
     </div>
   </div>
-    
   <% end %>
   <div>
       <%= will_paginate @instruments %>
-    </div>
-  <% else %>
-  You have no Instruments
-  <% end %>
-  
+  </div>
 </div>
+<%# nil.check %>

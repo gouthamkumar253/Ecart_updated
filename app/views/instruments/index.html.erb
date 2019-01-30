@@ -3,7 +3,7 @@
   <div class="hero-body">
     <div class="container">
       <h1 class="title">
-        Browse the latest instruments on Flanger
+        Browse the latest instruments on Saptaswaram
       </h1>
       <%= link_to 'Download as .xlsx', instruments_path(format: :xlsx) %>
 
@@ -12,49 +12,73 @@
 </section>
 <% end %>
 
-  <div>
-    <%= form_tag instruments_path, :method => 'get', :id => "instruments_search" do %>
+  <div class="field is_grouped">
+    <%= form_tag instruments_path, :remote=> true, :method => 'get', :id => "instruments_search" do %>
       <p>
         <%= text_field_tag :search, params[:search] %>
         <%= submit_tag "Search", :name => nil %>
       </p>
-    
     <% end %>
+    
+
+    <%= form_tag instruments_path, :remote=>true, :method =>'get', :id => "sort_form" do %>
+      <div class="columns">
+          <div class="field column is-4">
+            <div class="control">
+              <label class="label">Brand</label>
+              <div class="control has-icons-left">
+                <span class="select">
+                  <%= select_tag "sort_brand", options_for_select(Instrument::BRAND), prompt: "Select brand" %>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-tag"></i>
+                </span>
+              </div>
+            </div>
+           </div>
+
+          <div class="field column is-4">
+            <div class="control">
+              <label class="label">Finish</label>
+              <div class="control has-icons-left">
+                <span class="select">
+                  <%= select_tag "sort_finish", options_for_select(Instrument::FINISH), prompt: "Select finish" %>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-paint-brush"></i>
+                </span>
+              </div>
+            </div>
+           </div>
+
+          <div class="field column is-4">
+            <div class="control">
+              <label class="label">Condition</label>
+              <div class="control has-icons-left">
+                <span class="select">
+                  <%= select_tag "sort_condition", options_for_select(Instrument::CONDITION), prompt: "Select condition" %>
+                </span>
+                <span class="icon is-small is-left">
+                  <i class="fa fa-paint-brush"></i>
+                </span>
+              </div>
+            </div>
+           </div>
+         </div>
+
+    <%end %>
+
+
+    
+
+
+
+
+    <%#= link_to 'Show', instruments_path, remote: true %>
   </div>
 
-<div class="instrument-index-grid pt4">
-  <% @instruments.each do |instrument| %>
 
-    <div class="instrument border-light">
-      <div class="instrument-thumb">
-      <%= link_to image_tag(instrument.image_url(:thumb)), instrument %>
+<div id="instruments_lister">
 
-      <% if instrument.condition? %>
-        <div class="condition">
-          <span class="tag is-dark"><%= instrument.condition %></span>
-        </div>
-      <% end %>
-      </div>
-
-
-    <div class="pa3">
-
-      <h3 class="fw7 f4 title"><%= link_to instrument.title, instrument %></h3>
-
-      <p class="has-text-gray fg pt1">Sold by <%= instrument.user.username %></p>
-      <%#= rating_for @instrument, 'Quality',star: 10, disable_after_rate: true %>
-
-      <p class="f3 fw6 has-text-right pt2 price"><%= number_to_currency(instrument.price) %></p>
-
-      <% if instrument_author(instrument) %>
-         <%= link_to 'Edit', edit_instrument_path(instrument), class: "button is-small" %>
-         <%= link_to 'Delete', instrument, method: :delete, data: { confirm: "Are you sure ?" }, class: "button is-small" %>
-      <% end %>
-
-    </div>
-  </div>
-  <% end %>
-  <div>
-      <%= will_paginate @instruments %>
-  </div>
+  <%= render 'instruments' %>
 </div>

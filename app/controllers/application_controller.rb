@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
 	
 	# If a cart is present for the user, show it in next login
 
-	
- 	include CurrentCart
- 	before_action :set_cart
+	#if(current_user)
+ 		include CurrentCart
+ 		before_action :set_cart
+ 	#end
 end

@@ -2,18 +2,31 @@ class InstrumentsController < ApplicationController
   before_action :set_instrument, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index,:show]
   
-  # GET /instruments
-  # GET /instruments.json
   def index
    # @instruments = Instrument.all.order("created_at desc")
-   if(params[:search])
+   unless params[:brand].blank?
+    @instruments = Instrument.where("brand like ?",params[:brand]).paginate(:page => params[:page],:per_page => 5).order("created_at desc") 
+   
+   end
+  
+  unless params[:finish].blank?
+    @instruments = Instrument.where("finish like ?",params[:finish]).paginate(:page => params[:page],:per_page => 5).order("created_at desc") 
+
+  end
+   
+  unless (params[:condition]).blank?
+    @instruments = Instrument.where("condition like ?",params[:condition]).paginate(:page => params[:page],:per_page => 5).order("created_at desc") 
+  end
+
+  if(params[:search])
     @instruments = Instrument.search(params[:search]).paginate(:page => params[:page],:per_page => 5).order("created_at desc")
-   else
+  else
     @instruments = Instrument.paginate(:page => params[:page],:per_page => 5).order("created_at desc")
-    end
+  end
     respond_to do |format|
     format.html
     format.xlsx
+    format.js
   end
 end
 
@@ -29,9 +42,12 @@ end
   end
   
 
+
   # GET /instruments/1
   # GET /instruments/1.json
   def show
+    
+    
   end
 
   # GET /instruments/new
@@ -95,3 +111,4 @@ end
       params.require(:instrument).permit(:brand, :quantity, :model, :description, :condition, :finish, :title, :price, :image)
     end
 end
+#

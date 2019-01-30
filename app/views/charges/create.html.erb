@@ -1,1 +1,20 @@
-<h2>Thanks, you paid <strong>$5.00</strong>!</h2>
+<h2>Thanks, you paid <strong><%= @cart.total_price %></strong>!</h2>
+
+<section class="section">
+  <%= render(@cart.line_items) %>
+<%# nil.check %>
+  <div class="columns">
+    <div class="column">
+      <%#= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "button is-danger" %>
+      <br>
+      
+      <%#= link_to 'Purchase', purchase_cart_path(@cart),class: 'button is-warning'%> 
+    </div>
+    <div class="column total has-text-right">
+      <h4 class="title is-4">
+        <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %>
+      </h4>
+    </div>
+  </div>
+</section>
+<%= link_to 'Confirm', order_confirm_path(@cart),class: 'button is-warning'%> 

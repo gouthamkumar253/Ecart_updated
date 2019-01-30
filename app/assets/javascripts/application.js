@@ -17,3 +17,4 @@
 //= require_tree .
 //= require_tree ../../../app/assets/javascripts
 //= require_tree ./channels
+//= require brand_filter

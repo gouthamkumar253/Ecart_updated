@@ -16,6 +16,11 @@ Rails.application.routes.draw do
   resources :messages, only:[:create]
   resources :chat_rooms, only: [:new, :create, :show, :index]
   get '/instruments_user', to: 'instruments#show_user_instruments', as: 'show_user_instruments'
+  get '/purchase/:id', to: 'carts#purchase', as: 'purchase_cart'
+  get '/order/:id', to: 'carts#order', as: 'order_confirm'
+  get '/reset/:id', to: 'carts#reset_cart', as: 'reset_cart'
+  #get '/user_carts', to: 'carts#show_carts', as: 'show_user_carts'
+
 
  
   root 'instruments#index'
